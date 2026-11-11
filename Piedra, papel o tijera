@@ -1,0 +1,37 @@
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+
+        String[] opciones = {"piedra", "papel", "tijera"};
+
+        System.out.print("Elige piedra, papel o tijera: ");
+        String jugador = sc.nextLine().toLowerCase();
+
+        String maquina = opciones[random.nextInt(3)];
+
+        System.out.println("La máquina eligió: " + maquina);
+
+        if (!jugador.equals("piedra") &&
+            !jugador.equals("papel") &&
+            !jugador.equals("tijera")) {
+            System.out.println("Opción no válida");
+        } else if (jugador.equals(maquina)) {
+            System.out.println("¡Empate!");
+        } else if (
+            (jugador.equals("piedra") && maquina.equals("tijera")) ||
+            (jugador.equals("papel") && maquina.equals("piedra")) ||
+            (jugador.equals("tijera") && maquina.equals("papel"))
+        ) {
+            System.out.println("¡Has ganado!");
+        } else {
+            System.out.println("Has perdido");
+        }
+
+        sc.close();
+    }
+}
